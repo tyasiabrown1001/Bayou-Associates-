@@ -36,7 +36,7 @@ def verify_database(db_path=DB, query_path=None):
         print(f"FAIL: Database not found: {path}")
         return False
     try:
-        conn = sqlite3.connect(path.resolve().as_uri() + "?mode=ro")
+        conn = sqlite3.connect(path.resolve().as_uri() + "?mode=ro", uri=True)
     except sqlite3.Error as error:
         print(f"FAIL: Could not open database: {error}")
         return False

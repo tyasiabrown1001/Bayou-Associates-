@@ -30,7 +30,7 @@ def open_connection(db_path=DB):
     else:
         # Drop this fallback once Brandon's shared connection helper is available.
         uri = Path(db_path).resolve().as_uri() + "?mode=rw"
-        conn = sqlite3.connect(uri, timeout=10)
+        conn = sqlite3.connect(uri, timeout=10, uri=True)
     ensure_foreign_keys(conn)
     conn.row_factory = sqlite3.Row
     return conn
